@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #fff;
+}
+.dias-semana,
+.mes-ano{
+    background-color: #b6d7a8;
+}
+.dias-semana,
+.datas{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+    justify-items: center;
+}
+.dias-semana span,
+.mes-ano{
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+}
+.datas{
+    padding: 1rem 0;
+}
+.dia-mes{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #b6d7a8;
+}
+.mes-ano{
+    padding: 1rem;
+    font-size: 2rem;
+}

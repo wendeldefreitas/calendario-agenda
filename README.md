@@ -10,3 +10,7 @@ O calendário está vinculado a uma planilha online do Google Planilhas, ou seja
 ## Palavras chave:
 
 HTML, CSS, JAVASCRIPT, Responsivo, Consumo de API (SheetDB), Mobile First.
+
+## QUER VER FUNCIONANDO?
+
+https://wendeldefreitas.github.io./calendario-agenda

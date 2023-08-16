@@ -13,4 +13,4 @@ HTML, CSS, JAVASCRIPT, Responsivo, Consumo de API (SheetDB), Mobile First.
 
 ## QUER VER FUNCIONANDO?
 
-https://wendeldefreitas.github.io./calendario-agenda
+https://wendeldefreitas.github.io/calendario-agenda

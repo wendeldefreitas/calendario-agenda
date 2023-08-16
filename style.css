@@ -1,38 +1,73 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body{
-    background-color: #fff;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.dias-semana,
-.mes-ano{
-    background-color: #b6d7a8;
+ul{
+  list-style: none;
 }
-.dias-semana,
+.container{
+  padding: 10px;
+}
+.header{
+  padding: 10px;
+  height: 45px;
+  padding: 8px 16px;
+  color: #3461D6;
+  font-weight: bold;
+}
+.seta{
+  padding: 3px 5px;
+  border-radius: 50%;
+  background-color: rgba(230, 230, 230, 0.412);
+}
+.header,
+.container-semana,
+.container-datas > div{
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+}
+.container-datas{
+
+}
+.container-mes-ano{
+  width: 100%;
+  text-align: center;
+}
 .datas{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 1rem;
-    justify-items: center;
 }
-.dias-semana span,
-.mes-ano{
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
+.container-semana{
 }
-.datas{
-    padding: 1rem 0;
+.dia-semana{
+  width: 100%;
+  text-align: center;
+  color: #74A0FF;
+  font-weight: bold;
+  line-height: 2rem;
 }
-.dia-mes{
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background-color: #b6d7a8;
+.container-datas{
 }
-.mes-ano{
-    padding: 1rem;
-    font-size: 2rem;
+.container-datas > div{
+}
+.data{
+  width: 100%;
+  color: rgba(50, 50, 50, 0.891);
+  text-align:  center;
+  line-height: 2rem;
+  border: 1px solid #3462d629;
+}
+.data:hover{
+  color: white;
+  font-weight: bold;
+  background-color: #74A0FF;
+}
+.escala{
+  background-color: #74a0ff62;
+  height: 300px;
 }

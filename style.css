@@ -33,16 +33,9 @@ ul{
   align-content: center;
   align-items: center;
 }
-.container-datas{
-
-}
 .container-mes-ano{
   width: 100%;
   text-align: center;
-}
-.datas{
-}
-.container-semana{
 }
 .dia-semana{
   width: 100%;
@@ -50,10 +43,6 @@ ul{
   color: #74A0FF;
   font-weight: bold;
   line-height: 2rem;
-}
-.container-datas{
-}
-.container-datas > div{
 }
 .data{
   width: 100%;

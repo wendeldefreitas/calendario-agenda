@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let dataAtual = new Date();
 
   getMesAno(dataAtual, meses);
-  
+  getDatas(dataAtual);
 })
 
 function getMesAno(dataAtual, meses){
@@ -25,4 +25,16 @@ function getMesAno(dataAtual, meses){
   mesAno.innerHTML = 
     ` <span">${meses[dataAtual.getMonth()]}</span> ` +
     ` <span>${dataAtual.getFullYear()}</span> `;
+}
+
+function getDatas(dataAtual){
+  let novaData = new Date();
+  let index = 0;
+  let datas = document.querySelectorAll('.data');
+
+  datas.forEach((data) => {
+    novaData.setDate(dataAtual.getDate() + (index - dataAtual.getDate()));
+    data.textContent = novaData.getDate();
+    index++;
+  });
 }

@@ -10,12 +10,13 @@ document.addEventListener("DOMContentLoaded", () =>{
   let gridBox = document.querySelector(".grid-box");
   
   //CHAMAR AS FUNÇÕES
+  add_HTML_semana_datas(gridBox);
 });
 
 function add_HTML_semana_datas(element){
 
   for (let index = 0; index < 42; index++) {
-    //CRIAR A VARIAVEL DIV
+    let div = document.createElement("div");
     element.appendChild(div);
   }
 }

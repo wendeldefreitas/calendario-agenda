@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let setaDireita = document.querySelector(".seta-direita");
 
   //CHAMAR AS FUNÇÕES
-  addDiv(gridBox, 42);
+  addDiv(gridBox, 49);
   setCalendario(dataAtual, htmlAno, htmlMes, gridBox);
 
   setaEsquerda.addEventListener("click", () => {
@@ -61,8 +61,10 @@ function setCalendario(data, htmlAno, htmlMes, gridBox) {
 
   gridBox.childNodes.forEach((element) => {
     if (index < 7) {
+      element.classList.add("semana");
       element.innerText = DIAS_SEMANA[index];
     } else {
+      element.classList.add("data");
       element.innerText = novaData.getDate();
       novaData.setDate(novaData.getDate() + 1);
     }

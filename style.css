@@ -64,3 +64,13 @@ body {
   color: gray;
   border: 1px solid rgba(177, 177, 177, 0.671);
 }
+.box-tarefas{
+  margin-top: 30px;
+  border-top: 2px solid #145f8a;
+}
+.tarefas-titulo{
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 500;
+}

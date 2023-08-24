@@ -41,7 +41,7 @@ body {
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
 }
-.semana{
+{
   background-color: #145f8a;
   color: white;
 }
@@ -53,7 +53,10 @@ body {
 .data {
   border: 1px solid rgba(177, 177, 177, 0.671);
 }
-.data:hover{
+.data:hover,
+.semana,
+.seta-esquerda:hover,
+.seta-direita:hover{
   background-color: #145f8a;
   color: white;
 }

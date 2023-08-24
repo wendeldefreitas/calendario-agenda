@@ -66,6 +66,11 @@ function setCalendario(data, htmlAno, htmlMes, gridBox) {
     } else {
       element.classList.add("data");
       element.innerText = novaData.getDate();
+      if (novaData.getMonth() != data.getMonth()) {
+        element.classList.add("apagado");
+      }else{
+        element.classList.remove("apagado");
+      }
       novaData.setDate(novaData.getDate() + 1);
     }
     index++;

@@ -49,6 +49,7 @@ body {
 .data{
   padding: 3px;
   text-align: center;
+  font-weight: bold;
 }
 .data {
   border: 1px solid rgba(177, 177, 177, 0.671);
@@ -59,4 +60,8 @@ body {
 .seta-direita:hover{
   background-color: #145f8a;
   color: white;
+}
+.apagado{
+  color: gray;
+  border: 1px solid rgba(177, 177, 177, 0.671);
 }

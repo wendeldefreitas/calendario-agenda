@@ -61,8 +61,9 @@ body {
   color: white;
 }
 .apagado{
-  color: gray;
+  color: rgb(70, 70, 70);
   border: 1px solid rgba(177, 177, 177, 0.671);
+  background-color: rgba(177, 177, 177, 0.671);
 }
 .box-tarefas{
   margin-top: 30px;

@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let quadrados = document.querySelector(".grid-box");
   let setaEsquerda = document.querySelector(".seta-esquerda");
   let setaDireita = document.querySelector(".seta-direita");
+  let matriz = document.querySelector(".matriz");
+  let capela = document.querySelector(".capela");
 
   //CHAMAR AS FUNÇÕES
   addDiv(quadrados, 49);
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setCalendario(dataAtual, htmlAno, htmlMes, quadrados);
   });
 
-  clickHandleDatas(quadrados);
+  clickHandleDatas(quadrados, matriz, capela);
 });
 
 function addDiv(quadrados, qtd) {
@@ -52,7 +54,9 @@ function setCalendario(data, htmlAno, htmlMes, quadrados) {
   let index = 0;
   let primeiroDiaMes = new Date(data.getFullYear(), data.getMonth(), 1);
   let primeiroQuadrado = new Date(primeiroDiaMes);
-  primeiroQuadrado.setDate(primeiroQuadrado.getDate() - primeiroQuadrado.getDay());
+  primeiroQuadrado.setDate(
+    primeiroQuadrado.getDate() - primeiroQuadrado.getDay()
+  );
   htmlAno.innerText = data.getFullYear();
   htmlMes.innerText = MESES[data.getMonth()];
 
@@ -61,6 +65,7 @@ function setCalendario(data, htmlAno, htmlMes, quadrados) {
       element.classList.add("semana");
       element.innerText = DIAS_SEMANA[index];
     } else {
+      element.id = primeiroQuadrado.toLocaleDateString("pt-BR");
       element.classList.add("data");
       element.innerText = primeiroQuadrado.getDate();
 
@@ -77,18 +82,38 @@ function setCalendario(data, htmlAno, htmlMes, quadrados) {
   });
 }
 
-function clickHandleDatas(quadrados) {
+function clickHandleDatas(quadrados, matriz, capela) {
   let index = 0;
 
   quadrados.childNodes.forEach((element) => {
     if (index < 7) {
-      //ignorar primeira linha, dias da semana.
+      //ignorar primeira linha = dias da semana.
     } else {
       element.addEventListener("click", () => {
-        //Verificar a data;
-        //Buscar na planilha todas as informações queferente a essa data;
-        //Atualizar as informações no campo ".box-tarefas" do HTML;
-        console.log(getData());
+        searchData("DATA", element.id).then((data) => {
+          matriz.innerHTML = "";
+          capela.innerHTML = "";
+
+          if (data.length != 0) {
+            data.forEach((resultado) => {
+              let div = document.createElement("div");
+              let hora = document.createElement("div");
+              let nome = document.createElement("div");
+              hora.innerText = resultado.HORA;
+              nome.innerText = resultado.NOME;
+              div.appendChild(hora);
+              div.appendChild(nome);
+
+              if (resultado.LOCAL.toLowerCase() == "matriz") {
+                matriz.innerText = 'MATRIZ';
+                matriz.appendChild(div);
+              } else {
+                capela.innerText = 'CAPELA';
+                capela.appendChild(div);
+              }
+            });
+          }
+        });
       });
     }
     index++;

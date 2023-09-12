@@ -5,16 +5,14 @@ function getData() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      /*CODIGO*/
+      /*CÓDIGO*/
     });
 }
 
-function searchData(colum, value) {
-  return fetch(url + "/search?" + colum + "=" + value)
-    .then((response) => response.json())
-    .then((data) => {
-      /*CODIGO*/
-    });
+async function searchData(colum, value) {
+  const response = await fetch(url + "/search?" + colum + "=" + value);
+  const data = await response.json();
+  return data;
 }
 
 function insertData() {

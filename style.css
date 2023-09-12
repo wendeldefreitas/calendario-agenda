@@ -65,13 +65,16 @@ body {
   border: 1px solid rgba(177, 177, 177, 0.671);
   background-color: rgba(177, 177, 177, 0.671);
 }
-.box-tarefas{
-  margin-top: 30px;
+.box-escala{
+  margin-top: 10px;
   border-top: 2px solid #145f8a;
+  display: flex;
 }
-.tarefas-titulo{
+.matriz,
+.capela{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
-  font-size: 1rem;
-  line-height: 2rem;
-  font-weight: 500;
 }

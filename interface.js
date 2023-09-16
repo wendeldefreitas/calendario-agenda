@@ -133,7 +133,7 @@ function horasNaoRepetidas(data){
 function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai){
   arrayHoras.forEach(hora => {
 
-    divPai.innerHTML += `<h3>${hora}</h3>`;
+    divPai.innerHTML += `<div class="hora">${hora}</div>`;
     arrayObjetos.forEach(objeto => {
       if (objeto.HORA == hora) {
         divPai.innerHTML += `<p>${objeto.NOME}</p>`;

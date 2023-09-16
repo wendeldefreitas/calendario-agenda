@@ -1,14 +1,6 @@
 "use strict";
 
-const DIAS_SEMANA = [
-  "Dom",
-  "Seg",
-  "Ter",
-  "Qua",
-  "Qui",
-  "Sex",
-  "Sab",
-];
+const DIAS_SEMANA = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"];
 const MESES = [
   "Janeiro",
   "Fevereiro",
@@ -85,11 +77,11 @@ function construirCalendario(data, divAno, divMes, divCalendario) {
   });
 }
 
-function clickHandleSetas (divSeta, data, divAno, divMes, divCalendario){
-  divSeta.addEventListener("click", () =>{
+function clickHandleSetas(divSeta, data, divAno, divMes, divCalendario) {
+  divSeta.addEventListener("click", () => {
     if (divSeta.className == "seta-esquerda") {
       data.setMonth(data.getMonth() - 1);
-    }else{
+    } else {
       data.setMonth(data.getMonth() + 1);
     }
     construirCalendario(data, divAno, divMes, divCalendario);
@@ -98,6 +90,10 @@ function clickHandleSetas (divSeta, data, divAno, divMes, divCalendario){
 
 function clickHandleDatas(divCalendario, divMatriz, divCapela) {
   let index = 0;
+  let arrayMatriz = [];
+  let arrayCapela = [];
+  let horasMatriz = [];
+  let horasCapela = [];
 
   divCalendario.childNodes.forEach((div) => {
     if (index < 7) {
@@ -109,19 +105,39 @@ function clickHandleDatas(divCalendario, divMatriz, divCapela) {
         divCapela.innerHTML = '<div class="title">CAPELA</div>';
 
         procurarAPI("DATA", div.id).then((data) => {
-          
           if (data.length != 0) {
+            arrayMatriz = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "matriz");
+            horasMatriz = horasNaoRepetidas(arrayMatriz);
+            arrayCapela = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "capela");
+            horasCapela = horasNaoRepetidas(arrayCapela);
 
-          let arrayHoras = [];
-          for (let i = 0; i < data.length; i++) {
-            arrayHoras.push(data[i].HORA);
-          }
-          
-
+            mostraNomesPorHora(horasMatriz, arrayMatriz, divMatriz);
+            mostraNomesPorHora(horasCapela, arrayCapela, divCapela);
           }
         });
       });
     }
     index++;
+  });
+}
+
+function horasNaoRepetidas(data){
+  let array = [];
+  for (let i = 0; i < data.length; i++) {
+    array.push(data[i].HORA);
+  }
+  //retira elementos duplicados
+  return [...new Set(array)];
+}
+
+function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai){
+  arrayHoras.forEach(hora => {
+
+    divPai.innerHTML += `<h3>${hora}</h3>`;
+    arrayObjetos.forEach(objeto => {
+      if (objeto.HORA == hora) {
+        divPai.innerHTML += `<p>${objeto.NOME}</p>`;
+      }
+    });
   });
 }

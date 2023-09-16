@@ -76,6 +76,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #242424;
+  text-align: center;
 }
 .matriz > .title,
 .capela > .title{
@@ -86,6 +87,7 @@ body {
 .capela > .hora{
   text-align: center;
   font-weight: bold;
+  margin-top: 10px;
 }
 .matriz > p,
 .capela > p{

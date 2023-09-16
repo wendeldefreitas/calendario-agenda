@@ -19,13 +19,14 @@ const MESES = [
 document.addEventListener("DOMContentLoaded", () => {
   //VARIAVEIS
   let data = new Date();
-  let divAno = document.querySelector(".ano");
-  let divMes = document.querySelector(".mes");
-  let divCalendario = document.querySelector(".grid-box");
-  let divSetaEsquerda = document.querySelector(".seta-esquerda");
-  let divSetaDireita = document.querySelector(".seta-direita");
-  let divMatriz = document.querySelector(".matriz");
-  let divCapela = document.querySelector(".capela");
+  const divAno = document.querySelector(".ano");
+  const divMes = document.querySelector(".mes");
+  const divCalendario = document.querySelector(".grid-box");
+  const divSetaEsquerda = document.querySelector(".seta-esquerda");
+  const divSetaDireita = document.querySelector(".seta-direita");
+  const divMatriz = document.querySelector(".matriz");
+  const divCapela = document.querySelector(".capela");
+  const divForm = document.querySelector(".box-form");
 
   //CHAMAR AS FUNÇÕES
   addDiv(divCalendario, 49);
@@ -89,12 +90,14 @@ function clickHandleSetas(divSeta, data, divAno, divMes, divCalendario) {
 }
 
 function clickHandleDatas(divCalendario, divMatriz, divCapela) {
+  //variaveis
   let index = 0;
   let arrayMatriz = [];
   let arrayCapela = [];
   let horasMatriz = [];
   let horasCapela = [];
 
+  //instruções
   divCalendario.childNodes.forEach((div) => {
     if (index < 7) {
       //ignorar primeira linha do calendario = dias da semana.
@@ -136,7 +139,7 @@ function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai){
     divPai.innerHTML += `<div class="hora">${hora}</div>`;
     arrayObjetos.forEach(objeto => {
       if (objeto.HORA == hora) {
-        divPai.innerHTML += `<p>${objeto.NOME}</p>`;
+        divPai.innerHTML += `<p><strong>${objeto.FUNCAO.toUpperCase()}</strong> : ${objeto.NOME}</p>`;
       }
     });
   });

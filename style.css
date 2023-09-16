@@ -75,6 +75,19 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  color: #242424;
+}
+.matriz > .title,
+.capela > .title{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.matriz > .hora,
+.capela > .hora{
   text-align: center;
+  font-weight: bold;
+}
+.matriz > p,
+.capela > p{
+  text-align: left;
 }

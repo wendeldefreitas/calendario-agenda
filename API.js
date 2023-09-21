@@ -1,5 +1,5 @@
 "use strict";
-const url = "https://sheetdb.io/api/v1/brwmzm3udxcln";
+const url = "https://sheetdb.io/api/v1/846i0fnsh4zmt";
 
 async function procurarAPI(nomeColuna, valor) {
   const response = await fetch(url + "/search?" + nomeColuna + "=" + valor);

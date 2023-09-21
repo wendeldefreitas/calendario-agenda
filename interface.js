@@ -139,7 +139,7 @@ function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai){
     divPai.innerHTML += `<div class="hora">${hora}</div>`;
     arrayObjetos.forEach(objeto => {
       if (objeto.HORA == hora) {
-        divPai.innerHTML += `<p><strong>${objeto.FUNCAO.toUpperCase()}</strong> : ${objeto.NOME}</p>`;
+        divPai.innerHTML += `<p><strong>${objeto.FUNCAO.toUpperCase()}</strong>: ${objeto.NOME}</p>`;
       }
     });
   });

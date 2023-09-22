@@ -1,13 +1,18 @@
 "use strict";
 const url = "https://sheetdb.io/api/v1/846i0fnsh4zmt";
 
-async function procurarAPI(nomeColuna, valor) {
+async function getData() {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+async function searchAPI(nomeColuna, valor) {
   const response = await fetch(url + "/search?" + nomeColuna + "=" + valor);
   const data = await response.json();
   return data;
 }
 
-function inserirAPI() {
+function insertData() {
   fetch(url, {
     method: "POST",
     headers: {
@@ -30,7 +35,7 @@ function inserirAPI() {
     });
 }
 
-function atualizarAPI() {
+function updateAPI() {
   fetch(url, {
     method: "PATCH",
     headers: {
@@ -49,7 +54,7 @@ function atualizarAPI() {
     });
 }
 
-function deletarAPI() {
+function deletData() {
   fetch(url, {
     method: "DELETE",
     headers: {

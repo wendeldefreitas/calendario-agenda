@@ -28,12 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const divCapela = document.querySelector(".capela");
   const divForm = document.querySelector(".box-form");
 
-  //CHAMAR AS FUNÇÕES
+  //calendario
   addDiv(divCalendario, 49);
   construirCalendario(data, divAno, divMes, divCalendario);
   clickHandleSetas(divSetaEsquerda, data, divAno, divMes, divCalendario);
   clickHandleSetas(divSetaDireita, data, divAno, divMes, divCalendario);
-  clickHandleDatas(divCalendario, divMatriz, divCapela);
+  //eventos
+  async function organizaChamadas() {
+    //apenas organiza a chamada das funções.
+    const dadosPlanilha = await getData();
+    clickHandleDatas(dadosPlanilha, divCalendario, divMatriz, divCapela);
+  }
+  organizaChamadas();
 });
 
 function addDiv(elementoPai, qtd) {
@@ -89,7 +95,7 @@ function clickHandleSetas(divSeta, data, divAno, divMes, divCalendario) {
   });
 }
 
-function clickHandleDatas(divCalendario, divMatriz, divCapela) {
+function clickHandleDatas(dadosPlanilha, divCalendario, divMatriz, divCapela) {
   //variaveis
   let index = 0;
   let arrayMatriz = [];
@@ -107,17 +113,17 @@ function clickHandleDatas(divCalendario, divMatriz, divCapela) {
         divMatriz.innerHTML = '<div class="title">MATRIZ</div>';
         divCapela.innerHTML = '<div class="title">CAPELA</div>';
 
-        procurarAPI("DATA", div.id).then((data) => {
-          if (data.length != 0) {
-            arrayMatriz = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "matriz");
-            horasMatriz = horasNaoRepetidas(arrayMatriz);
-            arrayCapela = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "capela");
-            horasCapela = horasNaoRepetidas(arrayCapela);
+        // procurarAPI("DATA", div.id).then((data) => {
+        //   if (data.length != 0) {
+        //     arrayMatriz = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "matriz");
+        //     horasMatriz = horasNaoRepetidas(arrayMatriz);
+        //     arrayCapela = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "capela");
+        //     horasCapela = horasNaoRepetidas(arrayCapela);
 
-            mostraNomesPorHora(horasMatriz, arrayMatriz, divMatriz);
-            mostraNomesPorHora(horasCapela, arrayCapela, divCapela);
-          }
-        });
+        //     mostraNomesPorHora(horasMatriz, arrayMatriz, divMatriz);
+        //     mostraNomesPorHora(horasCapela, arrayCapela, divCapela);
+        //   }
+        // });
       });
     }
     index++;

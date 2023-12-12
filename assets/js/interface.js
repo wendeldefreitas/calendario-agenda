@@ -19,6 +19,7 @@ const MESES = [
 document.addEventListener("DOMContentLoaded", () => {
   //VARIAVEIS
   let data = new Date();
+  //DOM Elements
   const divAno = document.querySelector(".ano");
   const divMes = document.querySelector(".mes");
   const divCalendario = document.querySelector(".grid-box");
@@ -26,20 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const divSetaDireita = document.querySelector(".seta-direita");
   const divMatriz = document.querySelector(".matriz");
   const divCapela = document.querySelector(".capela");
-  const divForm = document.querySelector(".box-form");
 
-  //calendario
-  addDiv(divCalendario, 49);
-  construirCalendario(data, divAno, divMes, divCalendario);
-  clickHandleSetas(divSetaEsquerda, data, divAno, divMes, divCalendario);
-  clickHandleSetas(divSetaDireita, data, divAno, divMes, divCalendario);
-  //eventos
-  async function organizaChamadas() {
-    //apenas organiza a chamada das funções.
+  async function organizaChamadasFuncoes() {
+    addDiv(divCalendario, 49);
+    construirCalendario(data, divAno, divMes, divCalendario);
+    clickHandleSetas(divSetaEsquerda, data, divAno, divMes, divCalendario);
+    clickHandleSetas(divSetaDireita, data, divAno, divMes, divCalendario);
     const dadosPlanilha = await getData();
     clickHandleDatas(dadosPlanilha, divCalendario, divMatriz, divCapela);
   }
-  organizaChamadas();
+  organizaChamadasFuncoes();
 });
 
 function addDiv(elementoPai, qtd) {
@@ -110,27 +107,39 @@ function clickHandleDatas(dadosPlanilha, divCalendario, divMatriz, divCapela) {
     } else {
       div.addEventListener("click", () => {
         //Sobreescrevendo conteudo da Div
-        divMatriz.innerHTML = '<div class="title">MATRIZ</div>';
-        divCapela.innerHTML = '<div class="title">CAPELA</div>';
+        divMatriz.innerHTML = "";
+        divCapela.innerHTML = "";
 
-        // procurarAPI("DATA", div.id).then((data) => {
-        //   if (data.length != 0) {
-        //     arrayMatriz = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "matriz");
-        //     horasMatriz = horasNaoRepetidas(arrayMatriz);
-        //     arrayCapela = data.filter((objeto) => objeto.LOCAL.toLowerCase() == "capela");
-        //     horasCapela = horasNaoRepetidas(arrayCapela);
+        if (dadosPlanilha.length > 0) {
+          arrayMatriz = dadosPlanilha.filter(
+            (objeto) => objeto.LOCAL.toLowerCase() == "matriz"
+          );
+          if (arrayMatriz.length > 0) {
+            divMatriz.innerHTML += '<div class="title">MATRIZ</div>';
+            horasMatriz = horasNaoRepetidas(arrayMatriz);
+            mostraNomesPorHora(horasMatriz, arrayMatriz, divMatriz);
+          } else {
+            divMatriz.classList.add("display-none");
+          }
 
-        //     mostraNomesPorHora(horasMatriz, arrayMatriz, divMatriz);
-        //     mostraNomesPorHora(horasCapela, arrayCapela, divCapela);
-        //   }
-        // });
+          arrayCapela = dadosPlanilha.filter(
+            (objeto) => objeto.LOCAL.toLowerCase() == "capela"
+          );
+          if (arrayCapela.length > 0) {
+            divCapela.innerHTML += '<div class="title">CAPELA</div>';
+            horasCapela = horasNaoRepetidas(arrayCapela);
+            mostraNomesPorHora(horasCapela, arrayCapela, divCapela);
+          } else {
+            divCapela.classList.add("display-none");
+          }
+        }
       });
     }
     index++;
   });
 }
 
-function horasNaoRepetidas(data){
+function horasNaoRepetidas(data) {
   let array = [];
   for (let i = 0; i < data.length; i++) {
     array.push(data[i].HORA);
@@ -139,13 +148,14 @@ function horasNaoRepetidas(data){
   return [...new Set(array)];
 }
 
-function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai){
-  arrayHoras.forEach(hora => {
-
+function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai) {
+  arrayHoras.forEach((hora) => {
     divPai.innerHTML += `<div class="hora">${hora}</div>`;
-    arrayObjetos.forEach(objeto => {
+
+    arrayObjetos.forEach((objeto) => {
       if (objeto.HORA == hora) {
-        divPai.innerHTML += `<p><strong>${objeto.FUNCAO.toUpperCase()}</strong>: ${objeto.NOME}</p>`;
+        divPai.innerHTML += `<p>${objeto.FUNCAO.toLowerCase()}: </p>`;
+        divPai.innerHTML += `<span id="nome">${objeto.NOME}</span>`;
       }
     });
   });

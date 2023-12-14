@@ -1,21 +1,12 @@
-- tentar acessar informações no localstorage, caso não tenha acessar a planilha do google.
-	. lembrar de salvar as alterações tanto no local storage quanto na planilha.
-
-- Ao clicar em uma data:
-	. mostra todos os registros do dia
-	. Opção de apagar um registro
-	. opção de editar um registro
-	. botão para alterar a cor para verde
-	. botão para alterar a cor para vermelho
-
-- Ao apertar e segurar em uma data:
-	. habilita o modo de edição, onde pode selecionar várias datas e editar todas de uma só vez.
-	. poder retirar as cores das datas selecionadas
-	. poder adicionar as respostar do formulario para todas as datas selecionadas
-	. poder apagar os registros de todas as datas selecionadas
+1 - Uma tela perguntando se é a primeira vez que o usuário usa o programa:
+  . caso seja a primeira vez, conduzir o usuário a realizar os formulários, não realizar a consulta nem no localstorage nem na planilha do google.
+  Usar o programa normalmente e salvar no localstorage e na planilha ao final.
+  . caso já tenha usado, quer dizer que já há dados para serem consultados, tentar consular no local storage, depois na planilha se necessário.
 	
-- Formularios:
-	. Possibilidade de criar formulários, por exemplo, nos dias de semana há apenas uma missa, então o formulário da liturgia ficaria assim:
+2 - Formularios:
+	. Os formularios são a estrutura dos dados que vão ser salvos na planilha, por exemplo: 
+  A pastoral da LITURGIA precisa realizar escalas das pessoas que vão servir na missa, então o formulario ficaria assim:
+
 		* Local da missa?_______________________________
 		* Hora da missa?________________________________
 		* Quantas pessoas vão servir?___________________
@@ -23,19 +14,35 @@
 		* Qual nome de cada pessoa que vai servir?______
 		* Alguma observação?____________________________
 		
-		OBS: 	- Criar uma pagina para criação de formulários;
+  Cada uma desses campos é o nome de uma coluna da planilha e cada linha da planilha é uma registro, ou seja, cada linha é uma resposta deste formulário.
+
+		OBS: 
+      - Criar uma pagina para criação de formulários;
 			- ter um botão para ir para essa pagina;
 			- poder salvar quantos formulários quiser;
 			- ao clicar em uma data do calendário ou habilitar o modo de edição do calendário mostrar todos os formulários disponiveis.
 
-- Gerar um PDF do calendario completo com as informações:
+3 - Ao clicar em uma data:
+	. mostra todos os registros do dia
+	. Opção de apagar um registro
+	. opção de editar um registro
+	. botão para alterar a cor para verde
+	. botão para alterar a cor para vermelho
+
+4 - Ao apertar e segurar em uma data:
+	. habilita o modo de edição, onde pode selecionar várias datas e editar todas de uma só vez.
+	. poder alterar as cores das datas selecionadas
+	. poder adicionar um registro para todas as datas selecionadas
+	. poder apagar todos os registros de todas as datas selecionadas
+
+5 - Resetar o calendário:
+	. ter a possibilidade de apagar todos os registros de uma só vez
+	. ter a possibilidade de resetar a cor original do calendario
+
+6 - Gerar um PDF do calendario completo com as informações:
 	. Gerar um PDF ou uma imagem para compartilhar no grupo de whatsapp, com fins informativos.
 	. gerar um PDF mensal ou semanal.
 	. deixar o botão de gerar PDF na pagina inicial (calendario).
 
-- Resetar o calendário:
-	. ter a possibilidade de apagar todos os registros de uma só vez
-	. ter a possibilidade de resetar a cor original do calendario
-
-- Manual de usuário:
+7 - Manual de usuário:
 	. criar um PDF, um video, chatGPT... alguma forma de ensinar como usar o programa.

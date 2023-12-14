@@ -19,6 +19,7 @@ const MESES = [
 document.addEventListener("DOMContentLoaded", () => {
   //VARIAVEIS
   let data = new Date();
+  let dadosDoAplicativo = null;
   const divAno = document.querySelector(".ano");
   const divMes = document.querySelector(".mes");
   const divCalendario = document.querySelector(".grid-box");
@@ -32,7 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     construirCalendario(data, divAno, divMes, divCalendario);
     clickHandleSetas(divSetaEsquerda, data, divAno, divMes, divCalendario);
     clickHandleSetas(divSetaDireita, data, divAno, divMes, divCalendario);
-    const dadosPlanilha = await getData();
+    dadosDoAplicativo = localStorage.getItem("dadosDoAplicativo");
+    if (!dadosDoAplicativo) {
+      dadosDoAplicativo = await getData();
+    }
     clickHandleDatas(dadosPlanilha, divCalendario, divMatriz, divCapela);
   }
   organizaChamadasFuncoes();

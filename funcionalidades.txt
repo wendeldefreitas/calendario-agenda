@@ -1,3 +1,6 @@
+- tentar acessar informações no localstorage, caso não tenha acessar a planilha do google.
+	. lembrar de salvar as alterações tanto no local storage quanto na planilha.
+
 - Ao clicar em uma data:
 	. mostra todos os registros do dia
 	. Opção de apagar um registro

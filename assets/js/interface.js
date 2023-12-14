@@ -19,7 +19,6 @@ const MESES = [
 document.addEventListener("DOMContentLoaded", () => {
   //VARIAVEIS
   let data = new Date();
-  //DOM Elements
   const divAno = document.querySelector(".ano");
   const divMes = document.querySelector(".mes");
   const divCalendario = document.querySelector(".grid-box");

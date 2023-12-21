@@ -98,68 +98,14 @@ function clickHandleSetas(divSeta, data, divAno, divMes, divCalendario) {
 function clickHandleDatas(dadosPlanilha, divCalendario, divMatriz, divCapela) {
   //variaveis
   let index = 0;
-  let arrayMatriz = [];
-  let arrayCapela = [];
-  let horasMatriz = [];
-  let horasCapela = [];
 
   //instruções
   divCalendario.childNodes.forEach((div) => {
     if (index < 7) {
       //ignorar primeira linha do calendario = dias da semana.
     } else {
-      div.addEventListener("click", () => {
-        //Sobreescrevendo conteudo da Div
-        divMatriz.innerHTML = "";
-        divCapela.innerHTML = "";
-
-        if (dadosPlanilha.length > 0) {
-          arrayMatriz = dadosPlanilha.filter(
-            (objeto) => objeto.LOCAL.toLowerCase() == "matriz"
-          );
-          if (arrayMatriz.length > 0) {
-            divMatriz.innerHTML += '<div class="title">MATRIZ</div>';
-            horasMatriz = horasNaoRepetidas(arrayMatriz);
-            mostraNomesPorHora(horasMatriz, arrayMatriz, divMatriz);
-          } else {
-            divMatriz.classList.add("display-none");
-          }
-
-          arrayCapela = dadosPlanilha.filter(
-            (objeto) => objeto.LOCAL.toLowerCase() == "capela"
-          );
-          if (arrayCapela.length > 0) {
-            divCapela.innerHTML += '<div class="title">CAPELA</div>';
-            horasCapela = horasNaoRepetidas(arrayCapela);
-            mostraNomesPorHora(horasCapela, arrayCapela, divCapela);
-          } else {
-            divCapela.classList.add("display-none");
-          }
-        }
-      });
+      div.addEventListener("click", () => {});
     }
     index++;
-  });
-}
-
-function horasNaoRepetidas(data) {
-  let array = [];
-  for (let i = 0; i < data.length; i++) {
-    array.push(data[i].HORA);
-  }
-  //retira elementos duplicados
-  return [...new Set(array)];
-}
-
-function mostraNomesPorHora(arrayHoras, arrayObjetos, divPai) {
-  arrayHoras.forEach((hora) => {
-    divPai.innerHTML += `<div class="hora">${hora}</div>`;
-
-    arrayObjetos.forEach((objeto) => {
-      if (objeto.HORA == hora) {
-        divPai.innerHTML += `<p>${objeto.FUNCAO.toLowerCase()}: </p>`;
-        divPai.innerHTML += `<span id="nome">${objeto.NOME}</span>`;
-      }
-    });
   });
 }

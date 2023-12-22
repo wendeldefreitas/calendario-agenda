@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <link rel="stylesheet" href="./assets/css/formularios.css" />
+    <script src="./assets/js/formularios.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <form action="">
+        <div class="observacoes">
+          <input
+            type="text"
+            name="observacoes"
+            id="observacoes"
+            placeholder="OBSERVAÇÕES"
+          />
+        </div>
+
+        <div class="local-da-missa">
+          <label for="matriz">Matriz</label>
+          <input type="radio" name="local" id="matriz" />
+          <label for="capela">Capela</label>
+          <input type="radio" name="local" id="capela" />
+        </div>
+
+        <div class="hora-da-missa">
+          <label for="hora">Horário</label>
+          <input type="time" name="hora" id="hora" />
+        </div>
+
+        <div class="qtd-servidores">
+          <label for="qtdServidores"
+            >Quantas pessoas vão servir nesta missa?</label
+          >
+          <input
+            type="number"
+            name="qtd-servidores"
+            id="qtdServidores"
+            min="1"
+          />
+        </div>
+
+        <input type="submit" value="Enviar" />
+      </form>
+    </main>
+  </body>
+</html>
